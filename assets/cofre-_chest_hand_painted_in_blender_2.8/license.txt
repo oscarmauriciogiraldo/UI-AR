@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cofre- Chest Hand Painted in Blender 2.8
+* source:	https://sketchfab.com/3d-models/cofre-chest-hand-painted-in-blender-28-aa02a8ed0f3347a4b746053cda95653a
+* author:	IsraLuque (https://sketchfab.com/IsraLuque)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cofre- Chest Hand Painted in Blender 2.8" (https://sketchfab.com/3d-models/cofre-chest-hand-painted-in-blender-28-aa02a8ed0f3347a4b746053cda95653a) by IsraLuque (https://sketchfab.com/IsraLuque) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
