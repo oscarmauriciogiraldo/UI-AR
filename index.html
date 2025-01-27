@@ -14,12 +14,23 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <a-text
+      <a-assets>
+        <a-assets-item
+          id="cofre"
+          src="assets/cofre_zelda/scene.gltf"
+        ></a-assets-item>
+      </a-assets>
+      <a-entity
+        gltf-model="#cofre"
+        scale="0.05 0.05 0.05"
+        position="0 0 2"
+      ></a-entity>
+      <!-- <a-text
         value="Hello AR"
         look-at="[gps-camera]"
         scale="120 120 120"
         gps-entity-place="latitude: 10.47833; longitude: 73.27337;"
-      ></a-text>
+      ></a-text> -->
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
