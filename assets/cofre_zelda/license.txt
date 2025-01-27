@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cofre Zelda
+* source:	https://sketchfab.com/3d-models/cofre-zelda-3284da9c88944019889bbace9a12f5d8
+* author:	NGEXO (https://sketchfab.com/ngexo3)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cofre Zelda" (https://sketchfab.com/3d-models/cofre-zelda-3284da9c88944019889bbace9a12f5d8) by NGEXO (https://sketchfab.com/ngexo3) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
