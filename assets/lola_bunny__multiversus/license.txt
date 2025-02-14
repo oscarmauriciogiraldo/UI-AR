@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lola Bunny | MultiVersus
+* source:	https://sketchfab.com/3d-models/lola-bunny-multiversus-cbb42d54a4db465ebb04bf1668b962f5
+* author:	King_45 (https://sketchfab.com/King_45)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lola Bunny | MultiVersus" (https://sketchfab.com/3d-models/lola-bunny-multiversus-cbb42d54a4db465ebb04bf1668b962f5) by King_45 (https://sketchfab.com/King_45) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

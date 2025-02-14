@@ -1,0 +1,51 @@
+<a-scene
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+      <a-assets>
+        <a-assets-item
+          id="cofre"
+          src="assets/cofre_zelda/scene.gltf"
+        ></a-assets-item>
+      </a-assets>
+      <a-entity
+        gltf-model="#cofre"
+        scale="0.02 0.02 0.02"
+        position="0 0.5 -3"
+        look-at="[gps-camera]"
+        gps-entity-place="latitude: 10.47833; longitude: 73.27337;"
+      ></a-entity>
+      <!-- <a-text
+        value="Hello AR"
+        look-at="[gps-camera]"
+        scale="120 120 120"
+        gps-entity-place="latitude: 10.47833; longitude: 73.27337;"
+      ></a-text> -->
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" look-at="[gps-camera]" gps-entity-place="latitude: 10.47833; longitude: 73.27337;"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" look-at="[gps-camera]" gps-entity-place="latitude: 10.47833; longitude: 73.27337;"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" look-at="[gps-camera]" gps-entity-place="latitude: 10.47833; longitude: 73.27337;"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" look-at="[gps-camera]" gps-entity-place="latitude: 10.47833; longitude: 73.27337;"></a-plane> -->
+      <!-- <a-sky color="#ECECEC"></a-sky> -->
+      <a-camera gps-camera rotation-reader> </a-camera>
+    </a-scene>
+
+
+
+   ------------------------------------
+   <a-assets>
+   <!-- https://raw.githubusercontent.com/oscarmauriciogiraldo/UI-AR/refs/heads/Master/assets/cofre_zelda/scene.gltf -->
+        <a-assets-item
+          id="cofre"
+          src="assets/cofre_zelda/scene.gltf"
+        ></a-assets-item>
+      </a-assets>
+      <a-entity
+        gltf-model="#cofre"
+        scale="0.01 0.01 0.01"
+        position="0 0.5 -3"
+        look-at="[gps-camera]"
+        gps-entity-place="latitude: 10.47833; longitude: 73.27337;"
+        animation-mixer="clip: *"
+
+      ></a-entity>
+      <a-camera gps-camera rotation-reader> </a-camera> 
