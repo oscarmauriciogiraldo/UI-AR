@@ -16,21 +16,22 @@
     <a-assets>
       <a-assets-item
         id="cofre"
-        src="assets/lola_bunny__multiversus/scene.gltf"
+        src="assets/cofre_zelda/scene.gltf"
       ></a-assets-item>
     </a-assets>
     <a-entity
-      id="lola"
+      id="tesoro"
       gltf-model="#cofre"
-      scale="0.5 0.5 0.5"
+      scale="0.02 0.02 0.02"
       position="0 0.5 -3"
       animation-mixer
     ></a-entity>
     
     </a-scene>
     
+    
     <script>
-      document.querySelector("#lola").addEventListener("model-loaded", function (e) {
+      document.querySelector("#tesoro").addEventListener("model-loaded", function (e) {
         let entity = e.target;
         let model = entity.getObject3D("mesh");
 
@@ -38,7 +39,7 @@
           console.log("Animaciones disponibles:", model.animations.map(a => a.name));
 
           let mixer = new THREE.AnimationMixer(model);
-          let action = mixer.clipAction(model.animations.find(a => a.name === "C038_Wall_Jump"));
+          let action = mixer.clipAction(model.animations.find(a => a.name === "Take 001"));
           
           if (action) {
             action.setLoop(THREE.LoopRepeat);
