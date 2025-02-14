@@ -21,13 +21,47 @@
         ></a-assets-item>
       </a-assets>
       <a-entity
+        id="tesoro"
         gltf-model="#cofre"
         scale="0.02 0.02 0.02"
         position="0 0.5 -3"
+        animation-mixer
         look-at="[gps-camera]"
         gps-entity-place="latitude: 10.47833; longitude: 73.27337;"
       ></a-entity>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
+
+    <script>
+      document.querySelector("#tesoro").addEventListener("model-loaded", function (e) {
+        let entity = e.target;
+        let model = entity.getObject3D("mesh");
+
+        if (model && model.animations && model.animations.length > 0) {
+          console.log("Animaciones disponibles:", model.animations.map(a => a.name));
+
+          let mixer = new THREE.AnimationMixer(model);
+          let action = mixer.clipAction(model.animations.find(a => a.name === "Take 001"));
+          
+          if (action) {
+            action.setLoop(THREE.LoopRepeat);
+            action.play();
+            console.log("Animación activada:", action._clip.name);
+          } else {
+            console.error("No se encontró la animación especificada.");
+          }
+
+          // Añadir el mixer a la escena para que actualice la animación en cada frame
+          AFRAME.registerComponent("animate-model", {
+            tick: function (time, delta) {
+              mixer.update(delta / 1000);
+            }
+          });
+          entity.setAttribute("animate-model", "");
+        } else {
+          console.error("No se encontraron animaciones en el modelo.");
+        }
+      });
+    </script>
   </body>
 </html>
