@@ -1,71 +1,78 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <!-- <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
+    <!-- *********************** Libraries VR A-Aframe ************************ -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+    <!-- **************** Librari AR.js A-Frame components ******************* -->
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
-  </head>
+    
+    <!-- *********** library for Animation mixer ***********  -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v7.5.0/dist/aframe-extras.loaders.min.js"></script>
 
+   
+
+  </head>
   <body>
-    <a-scene
-      vr-mode-ui='enabled: false'
+    
+    <a-scene 
+      cursor="rayOrigin: mouse"
+      vr-mode-ui="enabled: false"
       arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
-      renderer='antialias: true; alpha: true'
+      renderer="antialias: true; alpha: true"
     >
-      <a-assets>
-        <a-assets-item
-          id="cofre"
-          src="assets/cofre_zelda/scene.gltf"
-        ></a-assets-item>
-      </a-assets>
-      <a-entity
-        id="tesoro"
-        gltf-model="#cofre"
-        scale="0.02 0.02 0.02"
-        position="0 -2 -3"
-        rotation="30 0 0"
-        animation-mixer
-        look-at="[gps-camera]"
-        gps-entity-place="latitude: 10.47829; longitude: -73.27329;"
-      ></a-entity>
-      <a-camera gps-camera rotation-reader> </a-camera>
+
+      <!-- ******* Camera GPS ********* -->
+      <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader></a-camera>
+      
+      
     </a-scene>
 
+    <!-- *********************** Scripts and functions *************************-->
     <script>
-      document.querySelector("#tesoro").addEventListener("model-loaded", function (e) {
-        let entity = e.target;
-        let model = entity.getObject3D("mesh");
+      AFRAME.registerComponent('desaparecer-al-tocar', {
+        init: function () {
+          console.log('Objeto: cofre registrado')
 
-        if (model && model.animations && model.animations.length > 0) {
-          console.log("Animaciones disponibles:", model.animations.map(a => a.name));
+          let el = this.el;
+          let escalaInicial = el.getAttribute('scale');
 
-          let mixer = new THREE.AnimationMixer(model);
-          let action = mixer.clipAction(model.animations.find(a => a.name === "Take 001"));
-          
-          if (action) {
-            action.setLoop(THREE.LoopRepeat);
-            action.play();
-            console.log("Animación activada:", action._clip.name);
-          } else {
-            console.error("No se encontró la animación especificada.");
-          }
+          let textoGanaste = document.getElementById('objeto-capturado');
 
-          // Añadir el mixer a la escena para que actualice la animación en cada frame
-          AFRAME.registerComponent("animate-model", {
-            tick: function (time, delta) {
-              mixer.update(delta / 1000);
+          //Variable de control booleana
+          let tesoroRecogido = 'NoCapturado';
+
+          el.addEventListener('click', async function () {
+            console.log('objeto tocado')
+            alert('Pista Capturada')
+
+            if (!this.tesoroRecogido) {
+              this.tesoroRecogido = 'Capturado';
+              //console.log("Tesoro recogido:", this.tesoroRecogido);
+              alert("Tesoro recogido:", this.tesoroRecogido);
+  
+              // Animación para reducir tamaño
+              el.setAttribute('animation', {
+                property: 'scale',
+                to: '0 0 0',
+                dur: 1000,
+                easing: 'easeOutQuad'
+              });
+
+              
+  
+              // Desactivar el objeto y mostrar el texto
+              setTimeout(() => {
+                el.setAttribute('visible', false);
+                textoGanaste.setAttribute('visible', true);
+              }, 1000);
             }
+
           });
-          entity.setAttribute("animate-model", "");
-        } else {
-          console.error("No se encontraron animaciones en el modelo.");
         }
       });
     </script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
