@@ -66,6 +66,9 @@
               setTimeout(() => {
                 el.setAttribute('visible', false);
                 textoGanaste.setAttribute('visible', true);
+                setTimeout(() => {
+                  window.close();
+                }, 1000)
               }, 1000);
             }
 
