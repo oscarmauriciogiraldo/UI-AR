@@ -38,7 +38,7 @@
           let el = this.el;
           let escalaInicial = el.getAttribute('scale');
 
-          let textoGanaste = document.getElementById('objeto-capturado');
+          let congratulationsModel = document.getElementById('objeto-capturado');
 
           //Variable de control booleana
           let tesoroRecogido = 'NoCapturado';
@@ -65,10 +65,16 @@
               // Desactivar el objeto y mostrar el texto
               setTimeout(() => {
                 el.setAttribute('visible', false);
-                textoGanaste.setAttribute('visible', true);
-                setTimeout(() => {
-                  window.close();
-                }, 1000)
+                congratulationsModel.setAttribute('visible', true);
+
+                let finAR = 'abierto';
+                if (!this.finAR){
+                  this.finAR = 'cerrado';
+                  setTimeout(() => {
+                    window.close();
+                  }, 1000)
+                }
+                
               }, 1000);
             }
 
