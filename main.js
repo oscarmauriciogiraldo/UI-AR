@@ -6,8 +6,7 @@ window.onload = async () => {
     const urlParams = new URLSearchParams(window.location.search)
     console.log('1. Datos del url params: ', urlParams)
     /* Prueba mock url */
-    /* http://localhost:5173/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af 
-     js puro: http://127.0.0.1:5500/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
+    /* http://localhost:5173/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
     /* Prueba phone: https://6qt78s9s-5173.use2.devtunnels.ms/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
     /* Api Real: https://itssoluciones.co/tesoro/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
 
@@ -25,7 +24,7 @@ window.onload = async () => {
     el.addEventListener("gps-camera-update-position", e => {
         if(!testEntityAdded) {
             //alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
-            alert(`Got first GPS position: lon ${data.longitude} lat ${data.latitude}`);
+            alert(`3. Ubicacion recibida por parametros: lon ${longitude} lat ${latitude} for user ${user}`);
            
             /* Add a model to the nort of the initial GPS position */
             const cofre = document.createElement('a-entity')
@@ -48,9 +47,12 @@ window.onload = async () => {
                 /* Calcula la ubicacion y pone el modelo en estas coordenadas */
                 /* latitude: e.detail.position.latitude + 0.001,
                 longitude: e.detail.position.longitude */
-                latitude: data.latitude + 0.001,
-                longitude: data.longitude
+                /* latitude: data.latitude + 0.001,
+                longitude: data.longitude */
+                latitude: latitude + 0.001,
+                longitude: longitude,
             });
+            console.log('Latitud y longitud recibidas', latitude, longitude)
             document.querySelector("a-scene").appendChild(cofre);
 
             /*  ***** segundo modelo ******* */
@@ -70,8 +72,10 @@ window.onload = async () => {
             congratulations.setAttribute('animation-mixer', '');
             congratulations.setAttribute('visible', false);
             congratulations.setAttribute('gps-new-entity-place', {
-                latitude: e.detail.position.latitude + 0.001,
-                longitude: e.detail.position.longitude
+                /* latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude */
+                latitude: latitude + 0.001,
+                longitude: longitude
                 
             });
             document.querySelector("a-scene").appendChild(congratulations);
