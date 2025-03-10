@@ -48,14 +48,32 @@ window.onload = async () => {
             cofre.setAttribute('animation-mixer', '');
             cofre.setAttribute('desaparecer-al-tocar', '');
             cofre.setAttribute('gps-new-entity-place', {
-                /* Calcula la ubicacion y pone el modelo en estas coordenadas */
-                /* latitude: e.detail.position.latitude + 0.001,
-                longitude: e.detail.position.longitude */
                 latitude: latitude + 0.001,
                 longitude: longitude,
             });
             console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude)
             document.querySelector("a-scene").appendChild(cofre);
+
+            /* ****** Interacción con el Modelo (cofre) ******** */
+            //let pista = 'NoCapturado'
+            cofre.addEventListener('click', () => {
+
+                console.log('objeto tocado')
+                alert('4. Pista Capturada')
+                cofre.setAttribute('animation', {
+                    property: 'scale',
+                    to: '0 0 0',
+                    dur: 1000,
+                    easing: 'easeOutQuad'
+                });
+                // Desactivar el objeto1 y mostrar el modelo 2
+                setTimeout(() => {
+                    cofre.setAttribute('visible', false);
+                    congratulations.setAttribute('visible', true);
+                    
+                }, 1000);
+                
+            })
 
             /*  ***** segundo modelo ******* */
             const congratulations = document.createElement('a-entity')
@@ -74,8 +92,6 @@ window.onload = async () => {
             congratulations.setAttribute('animation-mixer', '');
             congratulations.setAttribute('visible', false);
             congratulations.setAttribute('gps-new-entity-place', {
-                /* latitude: e.detail.position.latitude + 0.001,
-                longitude: e.detail.position.longitude */
                 latitude: latitude + 0.001,
                 longitude: longitude
                 
