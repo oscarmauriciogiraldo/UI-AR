@@ -1,5 +1,6 @@
 window.onload = async () => {
     let testEntityAdded = false;
+    let estadoPista = 'PistaVista'
 
     /* funcion para obtener parametros desde la URL */
     function getUrlParams(){
@@ -56,22 +57,29 @@ window.onload = async () => {
 
             /* ****** Interacción con el Modelo (cofre) ******** */
             //let pista = 'NoCapturado'
-            cofre.addEventListener('click', () => {
+            cofre.addEventListener('click', async () => {
 
-                console.log('objeto tocado')
-                alert('4. Pista Capturada')
-                cofre.setAttribute('animation', {
-                    property: 'scale',
-                    to: '0 0 0',
-                    dur: 1000,
-                    easing: 'easeOutQuad'
-                });
-                // Desactivar el objeto1 y mostrar el modelo 2
-                setTimeout(() => {
-                    cofre.setAttribute('visible', false);
-                    congratulations.setAttribute('visible', true);
-                    
-                }, 1000);
+                if (estadoPista === 'PistaVista'){
+                    estadoPista = 'Capturado'
+                    alert(`Enviando estado de la pista, estado: ${estadoPista}`)
+
+                    console.log('objeto tocado')
+                    alert('4. Pista Capturada')
+                    cofre.setAttribute('animation', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        dur: 1000,
+                        easing: 'easeOutQuad'
+                    });
+                    // Desactivar el objeto1 y mostrar el modelo 2
+                    setTimeout(() => {
+                        cofre.setAttribute('visible', false);
+                        congratulations.setAttribute('visible', true);
+                        
+                    }, 1000);
+                }
+
+                
                 
             })
 
