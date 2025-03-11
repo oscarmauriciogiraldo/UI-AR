@@ -17,4 +17,14 @@ En este momento se abre la aplicacion pidiendo permisos de ubicacion y uso de ca
 
 ## Notas y/o Consideraciones.
 
+
+### Api
+
+ https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint
+ this.usr = {
+      user: this.usuario.id,
+      uuid: this.gestionSvc.capturando.uuid
+    }
+ https://itssoluciones.co/tesoro/?lat=4.811822/&lng=-75.692388/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=0c1677ac8c774911a077c1cde2b488cd
+
     
