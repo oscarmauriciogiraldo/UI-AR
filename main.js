@@ -7,15 +7,16 @@ window.onload = async () => {
         const params = new URLSearchParams(window.location.search)
         return {
             user: params.get("usr"),
-            userId: params.get("uuid") || "1234",
-            latitude: parseFloat(params.get("lat")) || 4.8029365, // Coordenada mockeada ubicacion casa
-            longitude: parseFloat(params.get("lng")) || -75.7342656, // Coordenada mockeada ubicacion casa
+            userId: params.get("uuid"),
+            latitude: parseFloat(params.get("lat")), // Coordenada mockeada ubicacion casa
+            longitude: parseFloat(params.get("lng")), // Coordenada mockeada ubicacion casa
         }
 
     }
     /* Prueba mock url */
     /* http://localhost:5173/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
     /* Prueba phone: https://6qt78s9s-5173.use2.devtunnels.ms/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
+    /* Prueba phone: https://6qt78s9s-5500.use2.devtunnels.ms/?lat=4.801498/&lng=-75.811316/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
     /* Api Real: https://itssoluciones.co/tesoro/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
 
     //obtener parámetros (mockeados o reales)
