@@ -1,6 +1,9 @@
 window.onload = async () => {
+
     let testEntityAdded = false;
     let estadoPista = 'PistaVista'
+
+    
 
     /* funcion para obtener parametros desde la URL */
     function getUrlParams(){
@@ -14,23 +17,22 @@ window.onload = async () => {
 
     }
     /* Prueba mock url */
-    /* http://localhost:5173/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
-    /* Prueba phone: https://6qt78s9s-5173.use2.devtunnels.ms/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
-    /* Prueba phone: https://6qt78s9s-5500.use2.devtunnels.ms/?lat=4.801498/&lng=-75.811316/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
-    /* Api Real: https://itssoluciones.co/tesoro/?lat=4.8029365/&lng=-75.7342656/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
+    /*Ukumary: /?lat=4.801498/&lng=-75.811316/&usr=OfficeGinadzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
+    /*CASA Oscar: /?lat=4.8029365/&lng=-75.7342656/&usr=OscardzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af */
 
     //obtener parámetros (mockeados o reales)
     const { user, userId, latitude, longitude } = getUrlParams()
-    console.log(`1. Datos recibidos del api mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
     /* ####### mock parametros recibidos URL ######## */
     
 
     //Botón finalizar juego
+
     
 
     const el = document.querySelector("[gps-new-camera]");
 
-    el.addEventListener("gps-camera-update-position", e => {
+    el.addEventListener("gps-camera-update-position", () => {
         if(!testEntityAdded) {
             //alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
             alert(`2. Ubicacion recibida por parametros: lon ${longitude} lat ${latitude} for user ${user}`);
@@ -53,14 +55,15 @@ window.onload = async () => {
             cofre.setAttribute('animation-mixer', '');
             cofre.setAttribute('desaparecer-al-tocar', '');
             cofre.setAttribute('gps-new-entity-place', {
-                latitude: latitude + 0.001,
+                latitude: latitude,
                 longitude: longitude,
             });
             console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude)
             document.querySelector("a-scene").appendChild(cofre);
 
+            
+
             /* ****** Interacción con el Modelo (cofre) ******** */
-            //let pista = 'NoCapturado'
             cofre.addEventListener('click', async () => {
 
                 if (estadoPista === 'PistaVista'){
@@ -104,11 +107,16 @@ window.onload = async () => {
             congratulations.setAttribute('animation-mixer', '');
             congratulations.setAttribute('visible', false);
             congratulations.setAttribute('gps-new-entity-place', {
-                latitude: latitude + 0.001,
+                latitude: latitude,
                 longitude: longitude
                 
             });
             document.querySelector("a-scene").appendChild(congratulations);
+
+            // Obtener posición del usuario y actualizar icono de guía
+            el.addEventListener("gps-camera-update-position", evt => {
+                actualizarDireccion(evt.detail.position.latitude, evt.detail.position.longitude, latitude + 0.001, longitude);
+            });
         }
         testEntityAdded = true;
     });
