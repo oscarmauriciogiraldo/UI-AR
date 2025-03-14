@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tesoro</title>
 
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
   <!-- ********* Bootstrap ************** -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -20,6 +25,46 @@
 </head>
 
   <body>
+
+     <!-- MOdal  -->
+     <div class="modal_container" id="modal-container">
+      <div class="modal_content">
+        <div class="close-modal" title="close">
+          <i class='bx bx-x'></i>
+        </div>
+        <div class="image">
+          <img src="assets/img/locationFalse.png" alt="" class="modal_img">
+        </div>
+        <h1 class="modal_title">¡Fuera del alcance!</h1>
+  
+        <p class="modal_description">
+          No te encuentras cerca de la ubicacion de tu pista.
+        </p>
+        <p class="modal_description" id="textModal"></p>
+  
+        <button class="modal_button-link close-modal">
+          Aceptar
+        </button>
+      </div>
+    </div>
+
+    <!-- Bootstrap modal -->
+    <!-- <div class="modal" id="distanceModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Objetivo Fuera de alcance</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Aun estas lejos del objetivo.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
     
     <a-scene 
       cursor="rayOrigin: mouse"
