@@ -5,11 +5,7 @@ window.onload = async () => {
     const minDistance = 10
     /* ***** modal ***** */
     const modal = document.getElementById('modal-container')
-    /* let modalShow = false
-    const myModal = new bootstrap.Modal(document.getElementById("distanceModal")) */
-
-    /* const distanceOut = document.getElementById('textModal')
-    distanceOut.innerHTML = `` */
+    
     /* funcion para obtener parametros desde la URL */
     function getUrlParams(){
         const params = new URLSearchParams(window.location.search)
@@ -21,7 +17,6 @@ window.onload = async () => {
         }
 
     }
-    /* ####### mock parametros recibidos URL ######## */
 
     //obtener parámetros (mockeados o reales)
     const { user, userId, latitude, longitude } = getUrlParams()
@@ -64,7 +59,7 @@ window.onload = async () => {
              * @constant {number} minDistance - distancia minima
              */
             if(distance <= minDistance){
-                //alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
+               
                 //alert(`2. Ubicacion recibida por parametros: lon ${longitude} lat ${latitude} for user ${user}`);
                 /* Atributos modelo */
                 cofre.setAttribute("scale", {
@@ -153,17 +148,10 @@ window.onload = async () => {
                 closeBtn.forEach(c => c.addEventListener('click', closeModal))
             }
 
-            
-           
-           
+        
             
             document.querySelector("a-scene").appendChild(cofre);            
             document.querySelector("a-scene").appendChild(congratulations);
-
-            // Obtener posición del usuario y actualizar icono de guía
-            /* el.addEventListener("gps-camera-update-position", evt => {
-                actualizarDireccion(evt.detail.position.latitude, evt.detail.position.longitude, latitude + 0.001, longitude);
-            }); */
         }
         testEntityAdded = true;
     });
