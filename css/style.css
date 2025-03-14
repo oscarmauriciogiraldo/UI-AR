@@ -14,7 +14,7 @@
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
-  --big-font-size: 2.3rem;
+  --big-font-size: 2rem;
   --normal-font-size: 0.938rem;
 
   /*========== z index ==========*/
@@ -77,7 +77,7 @@ img {
   /* background: red; */
   background-color: var(--container-color);
   text-align: center;
-  padding: 6rem 2rem 8rem 2rem;
+  padding: 4rem 2rem 6rem 2rem;
   border-radius: 1rem 1rem 0 0;
   transition: all 0.3s;
 
@@ -116,8 +116,8 @@ img {
 }
 
 .modal_container .modal_content .modal_description {
-  margin-bottom: 1rem;
-  font-size: 2rem;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
 }
 
 .modal_container .modal_content .modal_button-link {
