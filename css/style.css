@@ -156,3 +156,107 @@ img {
   /*=== Effect 3 ===*/
   /* transform: rotateX(0) scale(1) translateY(0); */
 }
+
+
+/* ****** Finish Button ******* */
+.finishButton_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  /* transform: translate(-50%, -50%); */
+
+  background-color: transparent;
+  /* width: 60px;
+  height: 60px; */
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: var(--z-modal);
+  /* visibility: hidden;
+  opacity: 0; */
+}
+
+.finishButton_container
+.finishButton{
+  display: flex;
+  width: 90%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: var(--first-color);
+  font-size: 1rem;
+  color: #FFF;
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  border-radius: .5rem;
+  transition: .3s;
+  justify-content: center;
+}
+
+/* ****** Indice Point ******* */
+.indicePoint_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  /* transform: translate(-50%, -50%); */
+
+  background-color: transparent;
+  /* width: 60px;
+  height: 60px; */
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: var(--z-modal);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-indice {
+  visibility: visible;
+  opacity: 1;
+}
+
+.indicePoint_container
+.headPoint{
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-bottom: 13px solid white;
+  transform: translateY(20%);
+}
+
+.indicePoint_container
+.point{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+}
+
+.indicePoint_container
+.point
+.bluePoint{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #0061c8;
+}

@@ -5,6 +5,7 @@ window.onload = async () => {
     const minDistance = 10
     /* ***** modal ***** */
     const modal = document.getElementById('modal-container')
+    const indicePont = document.getElementById('indicePoint-container')
     
     /* funcion para obtener parametros desde la URL */
     function getUrlParams(){
@@ -46,6 +47,39 @@ window.onload = async () => {
         const userLat =  e.detail.position.latitude
         const userLng = e.detail.position.longitude
 
+        const cofreLat = latitude + 0.001
+        const cofrelng = longitude
+
+        /* function actualizarIndiceGuia(objLat, objLon) {
+            if (userLat && userLng) {
+                let deltaX = objLon - userLng;
+                let deltaY = objLat - userLat;
+                let angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+                let screenX = (angle / 180) * (window.innerWidth / 2) + (window.innerWidth / 2);
+                indicePont.style.left = `${screenX}px`;
+            }
+        } */
+
+        function actualizarPuntoGuia() {
+            if (userLat !== null && userLng !== null && latitude !== null && longitude !== null) {
+                let deltaLat = cofreLat - userLat;
+                let deltaLon = cofrelng - userLng;
+                
+                let angle = Math.atan2(deltaLat, deltaLon) * (180 / Math.PI);
+                indicePont.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                
+                
+                /* const distancia = Math.sqrt(deltaLat * deltaLat + deltaLon * deltaLon) * 111139; // Convertir a metros
+                if (distancia < radioMinimo) {
+                    indicePont.style.display = 'none';
+                } else {
+                    indicePont.style.display = 'block';
+                } */
+            }
+        }
+       /*  setInterval(actualizarPuntoGuia, 1000); */
+        actualizarPuntoGuia();
+
         const distance = getDistance(userLat, userLng, latitude, longitude)
 
         if(!testEntityAdded ) {
@@ -59,6 +93,9 @@ window.onload = async () => {
              * @constant {number} minDistance - distancia minima
              */
             if(distance <= minDistance){
+
+                indicePont.classList.add('show-indice')
+                
                
                 //alert(`2. Ubicacion recibida por parametros: lon ${longitude} lat ${latitude} for user ${user}`);
                 /* Atributos modelo */
@@ -78,8 +115,8 @@ window.onload = async () => {
                 cofre.setAttribute('desaparecer-al-tocar', '');
                 /* Add a model to the nort of the initial GPS position  */
                 cofre.setAttribute('gps-new-entity-place', {
-                    latitude: latitude + 0.001,
-                    longitude: longitude,
+                    latitude: cofreLat,
+                    longitude: cofrelng,
                 });
                 cofre.setAttribute('visible', true)
                 console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude)
@@ -144,6 +181,8 @@ window.onload = async () => {
                 function closeModal(){
                     const modalContainer = document.getElementById('modal-container')
                     modalContainer.classList.remove('show-modal')
+                    indicePont.classList.add('show-indice')
+
                 }
                 closeBtn.forEach(c => c.addEventListener('click', closeModal))
             }
@@ -152,6 +191,8 @@ window.onload = async () => {
             
             document.querySelector("a-scene").appendChild(cofre);            
             document.querySelector("a-scene").appendChild(congratulations);
+
+            /* actualizarIndiceGuia(userLat + 0.001, userLng); */
         }
         testEntityAdded = true;
     });
