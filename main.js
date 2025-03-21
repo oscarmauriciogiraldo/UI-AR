@@ -6,6 +6,7 @@ window.onload = async () => {
     /* ***** modal ***** */
     const modal = document.getElementById('modal-container')
     const indicePont = document.getElementById('indicePoint-container')
+    const finishButton = document.getElementById('finishButton-container')
     
     /* funcion para obtener parametros desde la URL */
     function getUrlParams(){
@@ -161,7 +162,16 @@ window.onload = async () => {
                         setTimeout(() => {
                             cofre.setAttribute('visible', false);
                             congratulations.setAttribute('visible', true);
-                            
+                            setTimeout(() => {
+                                finishButton.classList.add('show-button')
+                                /* Redireccionar y cerrar */
+                                finishButton.addEventListener("click", () => {
+                                    window.location.href = "https://mobbin.com/?via=leander"; 
+                                    setTimeout(() => {
+                                        window.close(); 
+                                    }, 1000);
+                                });
+                            }, 5000)
                         }, 1000);
                     }
                     

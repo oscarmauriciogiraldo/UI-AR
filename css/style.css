@@ -160,28 +160,48 @@ img {
 
 /* ****** Finish Button ******* */
 .finishButton_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsla(var(--hue), 18%, 75%, 0.8);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: flex-end;
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: var(--z-modal);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.finishButton_container
+.finishButton_content{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-
-  position: absolute;
-  left: 50%;
-  bottom: 20%;
-  /* transform: translate(-50%, -50%); */
-
+  position: relative;
+  /* background: red; */
   background-color: transparent;
-  /* width: 60px;
-  height: 60px; */
-  overflow: hidden;
+  text-align: center;
+  padding: 4rem 2rem 6rem 2rem;
+  border-radius: 1rem 1rem 0 0;
   transition: all 0.3s;
-  z-index: var(--z-modal);
-  /* visibility: hidden;
-  opacity: 0; */
+
+  /*=== Effect 1 ===*/
+  transform: translateY(10%);
+
+  /*=== Effect 2 ===*/
+  /* transform: scale(.5) translateY(10%); */
+
+  /*=== Effect 3 ===*/
+  /* transform: rotateX(65deg) scale(.75) translateY(10%);
+    transform-origin: 50% 100%; */
 }
 
 .finishButton_container
+.finishButton_content
 .finishButton{
   display: flex;
   width: 90%;
@@ -196,6 +216,12 @@ img {
   border-radius: .5rem;
   transition: .3s;
   justify-content: center;
+}
+
+/* mostrar boton */
+.show-button {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* ****** Indice Point ******* */
