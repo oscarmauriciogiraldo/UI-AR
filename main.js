@@ -149,16 +149,16 @@ window.onload = async () => {
                 /* ******** Funcion enviar data ********* */
                 async function enviarDatos() {
                     const datos = {
-                        uuid: "2b2a7f0dacbf484ea19839af09fe6503",
-                        user: "dzWnzQ4fkQnVPJj2UfEt"
-                        /* uuid: userId,
-                        user: user, */
+                        /* uuid: "2b2a7f0dacbf484ea19839af09fe6503",
+                        user: "dzWnzQ4fkQnVPJj2UfEt" */
+                        uuid: userId,
+                        user: user,
                     };
 
                     console.log('Enviando datos', {datos})
                     alert('enviando los siguientes datos: ', datos)
 
-                    try {
+                    /* try {
                         const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
                             method: "POST", 
                             headers: {
@@ -171,7 +171,7 @@ window.onload = async () => {
                         console.log("Respuesta del API:", data); 
                     } catch (error) {
                         console.error("Error al enviar los datos:", error);
-                    }
+                    } */
                 }
 
                 /* ****** Interacción con el Modelo (cofre) ******** */
