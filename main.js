@@ -166,7 +166,7 @@ window.onload = async () => {
                                 finishButton.classList.add('show-button')
                                 /* Redireccionar y cerrar */
                                 finishButton.addEventListener("click", () => {
-                                    window.location.href = "https://mobbin.com/?via=leander"; 
+                                    //window.location.href = "https://mobbin.com/?via=leander"; 
                                     setTimeout(() => {
                                         window.close(); 
                                     }, 1000);
