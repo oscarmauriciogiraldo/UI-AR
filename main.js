@@ -26,6 +26,7 @@ window.onload = async () => {
     //obtener parámetros (mockeados o reales)
     const { user, userId, latitude, longitude } = getUrlParams()
     console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
     
 
     //Botón finalizar juego
@@ -54,15 +55,6 @@ window.onload = async () => {
         const cofreLat = latitude + 0.001
         const cofrelng = longitude
 
-        /* function actualizarIndiceGuia(objLat, objLon) {
-            if (userLat && userLng) {
-                let deltaX = objLon - userLng;
-                let deltaY = objLat - userLat;
-                let angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-                let screenX = (angle / 180) * (window.innerWidth / 2) + (window.innerWidth / 2);
-                indicePont.style.left = `${screenX}px`;
-            }
-        } */
 
         function actualizarPuntoGuia() {
             if (userLat !== null && userLng !== null && latitude !== null && longitude !== null) {
@@ -72,13 +64,6 @@ window.onload = async () => {
                 let angle = Math.atan2(deltaLat, deltaLon) * (180 / Math.PI);
                 indicePont.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
                 
-                
-                /* const distancia = Math.sqrt(deltaLat * deltaLat + deltaLon * deltaLon) * 111139; // Convertir a metros
-                if (distancia < radioMinimo) {
-                    indicePont.style.display = 'none';
-                } else {
-                    indicePont.style.display = 'block';
-                } */
             }
         }
        /*  setInterval(actualizarPuntoGuia, 1000); */
@@ -158,7 +143,7 @@ window.onload = async () => {
                     console.log('Enviando datos', {datos})
                     alert('enviando los siguientes datos: ', 'usuario', datos.uuid, datos)
 
-                    /* try {
+                    try {
                         const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
                             method: "POST", 
                             headers: {
@@ -171,7 +156,7 @@ window.onload = async () => {
                         console.log("Respuesta del API:", data); 
                     } catch (error) {
                         console.error("Error al enviar los datos:", error);
-                    } */
+                    }
                 }
 
                 /* ****** Interacción con el Modelo (cofre) ******** */
