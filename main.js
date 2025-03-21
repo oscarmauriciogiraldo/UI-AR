@@ -151,10 +151,12 @@ window.onload = async () => {
                     const datos = {
                         uuid: "2b2a7f0dacbf484ea19839af09fe6503",
                         user: "dzWnzQ4fkQnVPJj2UfEt"
+                        /* uuid: userId,
+                        user: user, */
                     };
 
                     console.log('Enviando datos', {datos})
-                    alert(`datos enviados: ${{datos}}`)
+                    alert('enviando los siguientes datos: ', datos)
 
                     try {
                         const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
