@@ -1,19 +1,7 @@
-async function fetchData() {
-    try {
-        const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint");
-        if (!response.ok) {
-            throw new Error(`Error en la petición: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Datos recibidos desde la API:", data);
-    } catch (error) {
-        console.error("Error al obtener los datos:", error);
-    }
-}
+
 
 window.onload = async () => {
 
-    await fetchData()
     
     let testEntityAdded = false;
     let estadoPista = 'PistaVista'
@@ -158,6 +146,32 @@ window.onload = async () => {
                     
                 });
 
+                /* ******** Funcion enviar data ********* */
+                async function enviarDatos() {
+                    const datos = {
+                        uuid: "2b2a7f0dacbf484ea19839af09fe6503",
+                        user: "dzWnzQ4fkQnVPJj2UfEt"
+                    };
+
+                    console.log('Enviando datos', {datos})
+                    alert(`datos enviados: ${{datos}}`)
+
+                    try {
+                        const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
+                            method: "POST", 
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(datos)
+                        });
+
+                        const data = await response.json();
+                        console.log("Respuesta del API:", data); 
+                    } catch (error) {
+                        console.error("Error al enviar los datos:", error);
+                    }
+                }
+
                 /* ****** Interacción con el Modelo (cofre) ******** */
                 cofre.addEventListener('click', async () => {
 
@@ -180,7 +194,8 @@ window.onload = async () => {
                             setTimeout(() => {
                                 finishButton.classList.add('show-button')
                                 /* Redireccionar y cerrar */
-                                finishButton.addEventListener("click", () => {
+                                finishButton.addEventListener("click", async () => {
+                                    await enviarDatos();
                                     //window.location.href = "https://mobbin.com/?via=leander"; 
                                     setTimeout(() => {
                                         window.close(); 
