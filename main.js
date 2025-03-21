@@ -1,5 +1,20 @@
+async function fetchData() {
+    try {
+        const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint");
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Datos recibidos desde la API:", data);
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+    }
+}
+
 window.onload = async () => {
 
+    await fetchData()
+    
     let testEntityAdded = false;
     let estadoPista = 'PistaVista'
     const minDistance = 10
