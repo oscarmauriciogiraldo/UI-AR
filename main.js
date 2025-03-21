@@ -156,7 +156,7 @@ window.onload = async () => {
                     };
 
                     console.log('Enviando datos', {datos})
-                    alert('enviando los siguientes datos: ', datos)
+                    alert('enviando los siguientes datos: ', 'usuario', datos.uuid, datos)
 
                     /* try {
                         const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
