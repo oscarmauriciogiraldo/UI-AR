@@ -49,13 +49,19 @@ window.onload = async () => {
 
     el.addEventListener("gps-camera-update-position", (e) => {
 
+        /* Coordenadas actuales del usuario */
         const userLat =  e.detail.position.latitude
         const userLng = e.detail.position.longitude
 
+        /* Coordenadas modelo 3D -> Cofre */
         const cofreLat = latitude + 0.001
         const cofrelng = longitude
 
+        /* Constantes del usuario */
+        const userID = userId
+        const userGame = user
 
+        /* posicionamiento punto guia */
         function actualizarPuntoGuia() {
             if (userLat !== null && userLng !== null && latitude !== null && longitude !== null) {
                 let deltaLat = cofreLat - userLat;
@@ -68,6 +74,33 @@ window.onload = async () => {
         }
        /*  setInterval(actualizarPuntoGuia, 1000); */
         actualizarPuntoGuia();
+
+        /* **** Enviar estado de la pista al Api **** */
+        const handleSendData = async () => {
+            console.log('Click en el boton para enviar datos al api')
+            try {
+                const datos = { 
+                    uuid: userID,
+                    user: userGame
+                }; 
+                console.log('Enviando Datos: ', datos)
+                alert('Enviando Datos: ', datos)
+                const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
+                    method: "POST", 
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                });
+        
+                const resultado = await response.json();
+                console.log("Respuesta de la API:", resultado);
+                alert("Respuesta de la API:", resultado)
+            } catch (error) {
+                console.error("Error al consumir la API:", error);
+            }
+
+        }
 
         const distance = getDistance(userLat, userLng, latitude, longitude)
 
@@ -132,32 +165,7 @@ window.onload = async () => {
                 });
 
                 /* ******** Funcion enviar data ********* */
-                async function enviarDatos() {
-                    const datos = {
-                        /* uuid: "2b2a7f0dacbf484ea19839af09fe6503",
-                        user: "dzWnzQ4fkQnVPJj2UfEt" */
-                        uuid: userId,
-                        user: user,
-                    };
-
-                    console.log('Enviando datos', {datos})
-                    alert('enviando los siguientes datos: ', 'usuario', datos.uuid, datos)
-
-                    try {
-                        const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
-                            method: "POST", 
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify(datos)
-                        });
-
-                        const data = await response.json();
-                        console.log("Respuesta del API:", data); 
-                    } catch (error) {
-                        console.error("Error al enviar los datos:", error);
-                    }
-                }
+                
 
                 /* ****** Interacción con el Modelo (cofre) ******** */
                 cofre.addEventListener('click', async () => {
@@ -182,9 +190,10 @@ window.onload = async () => {
                                 finishButton.classList.add('show-button')
                                 /* Redireccionar y cerrar */
                                 finishButton.addEventListener("click", async () => {
-                                    await enviarDatos();
-                                    //window.location.href = "https://mobbin.com/?via=leander"; 
+                                    //window.location.href = "https://mobbin.com/?via=leander";
+                                    handleSendData() 
                                     setTimeout(() => {
+                                        alert('Enviar estado de la pista')
                                         window.close(); 
                                     }, 1000);
                                 });
