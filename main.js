@@ -84,7 +84,6 @@ window.onload = async () => {
                     user: userGame
                 }; 
                 console.log('Enviando Datos: ', datos)
-                alert('Enviando Datos: ', datos)
                 const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
                     method: "POST", 
                     headers: {
@@ -95,7 +94,6 @@ window.onload = async () => {
         
                 const resultado = await response.json();
                 console.log("Respuesta de la API:", resultado);
-                alert("Respuesta de la API:", resultado)
             } catch (error) {
                 console.error("Error al consumir la API:", error);
             }
@@ -190,10 +188,8 @@ window.onload = async () => {
                                 finishButton.classList.add('show-button')
                                 /* Redireccionar y cerrar */
                                 finishButton.addEventListener("click", async () => {
-                                    //window.location.href = "https://mobbin.com/?via=leander";
                                     handleSendData() 
                                     setTimeout(() => {
-                                        alert('Enviar estado de la pista')
                                         window.close(); 
                                     }, 1000);
                                 });
