@@ -44,7 +44,7 @@ En este momento se abre la aplicacion pidiendo permisos de ubicacion y uso de ca
     /?lat=4.801498/&lng=-75.811316/&usr=OfficeGinadzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af
 
   - Oscar's Home: 
-    /?lat=4.8029365/&lng=-75.7342656/&usr=OscardzWnzQ4fkQnVPJj2UfEt/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af
+    /?lat=4.8029365/&lng=-75.7342656/&usr=OscarGiraldoHerrera618/&uuid=2ece92d1a7e54dd3b5a2dc2620afd6af
 
 ## Notas y/o Consideraciones.
 
@@ -57,5 +57,18 @@ En este momento se abre la aplicacion pidiendo permisos de ubicacion y uso de ca
       uuid: this.gestionSvc.capturando.uuid
     }
  https://itssoluciones.co/tesoro/?lat=4.811822/&lng=-75.692388/&usr=dzWnzQ4fkQnVPJj2UfEt/&uuid=0c1677ac8c774911a077c1cde2b488cd
+
+ const getUrlParams = () => {
+    const params = new URLSearchParams(window.location.search);
+    const isValid = (value) => /^[a-zA-Z0-9]+$/.test(value); // Expresión regular para validar
+
+    return {
+        user: isValid(params.get("usr")) ? params.get("usr") : null,
+        userId: isValid(params.get("uuid")) ? params.get("uuid") : null,
+        latitude: isValid(params.get("lat")) ? parseFloat(params.get("lat")) : null,
+        longitude: isValid(params.get("lng")) ? parseFloat(params.get("lng")) : null,
+    };
+};
+
 
     

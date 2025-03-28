@@ -12,10 +12,11 @@ window.onload = async () => {
     const finishButton = document.getElementById('finishButton-container')
     
     /* funcion para obtener parametros desde la URL */
-    function getUrlParams(){
+    const getUrlParams = () => {
         const params = new URLSearchParams(window.location.search)
+        const inValidParams  = (value) => value ? value.replace(/\/$/, "") : null
         return {
-            user: params.get("usr"),
+            user: inValidParams(params.get("usr")),
             userId: params.get("uuid"),
             latitude: parseFloat(params.get("lat")), // Coordenada mockeada ubicacion casa
             longitude: parseFloat(params.get("lng")), // Coordenada mockeada ubicacion casa
