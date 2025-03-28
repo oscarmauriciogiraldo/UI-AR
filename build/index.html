@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesoro</title>
+
+  <!-- ***** Custom styles ****** -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ##################*********************** Libraries VR A-Aframe ************************################## -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <!-- **************** Librari AR.js A-Frame components ******************* -->
+  <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+  <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+  <!-- *********** library for Animation mixer ***********  -->
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@v7.5.0/dist/aframe-extras.loaders.min.js"></script>
+  <!-- ##################*********************** Libraries VR A-Aframe ************************################## -->
+</head>
+
+  <body>
+
+    <!-- *****  Modal ***** -->
+    <div class="modal_container" id="modal-container">
+      <div class="modal_content">
+        <div class="modal_close close-modal" title="close">
+          <i class='bx bx-x'></i>
+        </div>
+        <div class="image">
+          <img src="assets/img/locationFalse.png" alt="" class="modal_img">
+        </div>
+        <h1 class="modal_title">¡Fuera del alcance!</h1>
+  
+        <p class="modal_description">
+          No te encuentras cerca de la ubicacion de tu pista.
+        </p>
+        <p class="modal_description" id="textModal"></p>
+  
+        <button class="modal_button-link close-modal">
+          Aceptar
+        </button>
+      </div>
+    </div>
+    
+    <!-- **** Entorno VR - AR ***** -->
+    <a-scene 
+      cursor="rayOrigin: mouse"
+      vr-mode-ui="enabled: false"
+      arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+      renderer="antialias: true; alpha: true"
+    >
+
+      <!-- ******* Camera GPS ********* -->
+      <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader></a-camera>
+      
+      
+    </a-scene>
+
+    <div class="indicePoint_container" id="indicePoint-container">
+      <div class="headPoint">
+      </div>
+      <div class="point">
+        <div class="bluePoint"></div>
+      </div>
+    </div>
+
+    <!-- **** Modal para finalizar Juego -->
+    <div class="finishButton_container" id="finishButton-container">
+      
+      <div class="finishButton_content">
+        <p class="description">
+          Haz Capturado esta pista, cierra y vuelve a la pantalla principal
+        </p>
+        <button class="finishButton">Aceptar</button>
+      </div>
+    </div>
+
+    <!-- *********************** Scripts and functions *************************-->
+    <script src="main.js"></script>
+  </body>
+
+</html>
