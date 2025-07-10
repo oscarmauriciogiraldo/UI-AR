@@ -25,14 +25,18 @@ window.onload = async () => {
     }
 
     //obtener parámetros (mockeados o reales)
-    const { user, userId, latitude, longitude } = getUrlParams()
-    console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
-    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
-    
+    const { user, userId, latitude, longitude } = getUrlParams()    
 
-    //Botón finalizar juego
 
     /* ********** Calcular distancia entre dos puntos ************* */
+    /**
+     * 
+     * @param {*} lat1 
+     * @param {*} lon1 
+     * @param {*} lat2 
+     * @param {*} lon2 
+     * @returns 
+     */
     function getDistance(lat1, lon1, lat2, lon2) {
         const R = 6371000;
         const rad = Math.PI / 180;
@@ -78,13 +82,11 @@ window.onload = async () => {
 
         /* **** Enviar estado de la pista al Api **** */
         const handleSendData = async () => {
-            console.log('Click en el boton para enviar datos al api')
             try {
                 const datos = { 
                     uuid: userID,
                     user: userGame
                 }; 
-                console.log('Enviando Datos: ', datos)
                 const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
                     method: "POST", 
                     headers: {
@@ -94,7 +96,6 @@ window.onload = async () => {
                 });
         
                 const resultado = await response.json();
-                console.log("Respuesta de la API:", resultado);
             } catch (error) {
                 console.error("Error al consumir la API:", error);
             }
@@ -117,8 +118,6 @@ window.onload = async () => {
 
                 indicePont.classList.add('show-indice')
                 
-               
-                //alert(`2. Ubicacion recibida por parametros: lon ${longitude} lat ${latitude} for user ${user}`);
                 /* Atributos modelo */
                 cofre.setAttribute("scale", {
                     x: 0.50, 
@@ -140,7 +139,6 @@ window.onload = async () => {
                     longitude: cofrelng,
                 });
                 cofre.setAttribute('visible', true)
-                console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude)
 
                 /* ***** Segundo modelo 3d ****** */
                 congratulations.setAttribute('id', 'objeto-capturado');
@@ -171,9 +169,7 @@ window.onload = async () => {
 
                     if (estadoPista === 'PistaVista'){
                         estadoPista = 'Capturado'
-                        alert(`Enviando estado de la pista, estado: ${estadoPista}`)
 
-                        console.log('objeto tocado')
                         alert('4. Pista Capturada')
                         cofre.setAttribute('animation', {
                             property: 'scale',
@@ -203,7 +199,6 @@ window.onload = async () => {
             } else {
                 /* ** usuario fuera del rango ** */
                 modal.classList.add('show-modal')
-                //alert(`Tu objetivo esta fuera de alcance, se encuentra a ${distance.toFixed(2)} metros de tu ubicacion actual`)
                 const distanceOut = document.getElementById('textModal')
                 distanceOut.innerHTML = `Destino a ${distance.toFixed(2)} Metros` 
                 cofre.setAttribute('visible', false)
@@ -225,7 +220,6 @@ window.onload = async () => {
             document.querySelector("a-scene").appendChild(cofre);            
             document.querySelector("a-scene").appendChild(congratulations);
 
-            /* actualizarIndiceGuia(userLat + 0.001, userLng); */
         }
         testEntityAdded = true;
     });
