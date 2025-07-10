@@ -26,8 +26,8 @@ window.onload = async () => {
 
     //obtener parámetros (mockeados o reales)
     const { user, userId, latitude, longitude } = getUrlParams()
-    console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
-    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    /* console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`); */
     
 
     //Botón finalizar juego
@@ -171,9 +171,9 @@ window.onload = async () => {
 
                     if (estadoPista === 'PistaVista'){
                         estadoPista = 'Capturado'
-                        alert(`Enviando estado de la pista, estado: ${estadoPista}`)
+                        /* alert(`Enviando estado de la pista, estado: ${estadoPista}`) */
 
-                        console.log('objeto tocado')
+                        /* console.log('objeto tocado') */
                         alert('4. Pista Capturada')
                         cofre.setAttribute('animation', {
                             property: 'scale',
