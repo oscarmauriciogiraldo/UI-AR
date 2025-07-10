@@ -26,8 +26,8 @@ window.onload = async () => {
 
     //obtener parámetros (mockeados o reales)
     const { user, userId, latitude, longitude } = getUrlParams()
-    console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
-    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    /* console.log(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`);
+    alert(`1. Datos recibidos del URL mockeada:  Usuario: ${user}, User-ID: ${userId}, Latitud: ${latitude}, Longitud: ${longitude}`); */
     
 
     //Botón finalizar juego
@@ -78,13 +78,13 @@ window.onload = async () => {
 
         /* **** Enviar estado de la pista al Api **** */
         const handleSendData = async () => {
-            console.log('Click en el boton para enviar datos al api')
+            /* console.log('Click en el boton para enviar datos al api') */
             try {
                 const datos = { 
                     uuid: userID,
                     user: userGame
                 }; 
-                console.log('Enviando Datos: ', datos)
+                /* console.log('Enviando Datos: ', datos) */
                 const response = await fetch("https://itssoluciones.co/cda/controller/categoria.php?op=CatchPoint", {
                     method: "POST", 
                     headers: {
@@ -94,7 +94,7 @@ window.onload = async () => {
                 });
         
                 const resultado = await response.json();
-                console.log("Respuesta de la API:", resultado);
+                /* console.log("Respuesta de la API:", resultado); */
             } catch (error) {
                 console.error("Error al consumir la API:", error);
             }
@@ -140,7 +140,7 @@ window.onload = async () => {
                     longitude: cofrelng,
                 });
                 cofre.setAttribute('visible', true)
-                console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude)
+                /* console.log('3. Modelo ubicado en  Latitud y longitud recibidas', latitude, longitude) */
 
                 /* ***** Segundo modelo 3d ****** */
                 congratulations.setAttribute('id', 'objeto-capturado');
@@ -171,9 +171,9 @@ window.onload = async () => {
 
                     if (estadoPista === 'PistaVista'){
                         estadoPista = 'Capturado'
-                        alert(`Enviando estado de la pista, estado: ${estadoPista}`)
+                        /* alert(`Enviando estado de la pista, estado: ${estadoPista}`)
 
-                        console.log('objeto tocado')
+                        console.log('objeto tocado') */
                         alert('4. Pista Capturada')
                         cofre.setAttribute('animation', {
                             property: 'scale',
